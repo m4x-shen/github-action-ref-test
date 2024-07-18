@@ -1,7 +1,8 @@
-name: Delete
+name: PR Closed
 
 on:
-  delete:
+  pull_request:
+    types: [closed]
 
   workflow_dispatch:
 
@@ -17,7 +18,3 @@ jobs:
     - name: Print github.ref
       run: |
           echo ${{ github.ref }}
-
-    - name: Print github.event.ref
-      run: |
-          echo ${{ github.event.ref }}
