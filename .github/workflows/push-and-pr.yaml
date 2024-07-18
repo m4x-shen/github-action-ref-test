@@ -11,6 +11,19 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+    - name: Branch names
+      id: branches
+      shell: bash
+      run: |
+        if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+          echo "current_branch=${{github.head_ref}}" >> $GITHUB_OUTPUT
+        else
+          echo "current_branch=${{github.ref_name}}" >> $GITHUB_OUTPUT
+        fi
+
+    - name: Print branch name
+      run: |
+        echo ${{ steps.branches.outputs.current_branch }}
     - name: Print github.ref_name
       run: |
           echo ${{ github.ref_name }}
