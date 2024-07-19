@@ -24,10 +24,10 @@ jobs:
       run: |
         echo ${{ steps.branches.outputs.current_branch }}
 
+    - name: Print github.head_ref
+      run: |
+          echo ${{ github.head_ref }}
+
     - name: Print github.ref_name
       run: |
           echo ${{ github.ref_name }}
-
-    - name: Print github.ref
-      run: |
-          echo ${{ github.ref }}
